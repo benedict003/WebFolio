@@ -1,8 +1,31 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function PortfolioWebsite() {
   const [mobileMenu, setMobileMenu] = useState(false);
+
+  const formRef = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        'service_twi0zcd',
+        'template_anf9gmi',
+        formRef.current,
+        'km6Wq5W9WTdi9xddr'
+      )
+      .then(() => {
+        alert('Message sent successfully!');
+        e.target.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('Failed to send message');
+      });
+  };
 
   const services = [
     {
@@ -45,6 +68,7 @@ export default function PortfolioWebsite() {
 
   return (
     <div className="bg-white text-gray-800 min-h-screen font-sans">
+
       {/* Navbar */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
@@ -82,7 +106,7 @@ export default function PortfolioWebsite() {
       {/* Hero */}
       <section className="bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-12 px-6 py-16 md:py-28">
-          
+
           <div>
             <p className="text-violet-600 font-semibold uppercase tracking-widest mb-4">
               Hello, I’m
@@ -101,16 +125,16 @@ export default function PortfolioWebsite() {
             </button>
           </div>
 
-          {/* ✅ UPDATED PROFILE IMAGE BLOCK */}
+          {/* PROFILE IMAGE (your updated design) */}
           <div className="relative flex justify-center">
             <div className="absolute w-72 h-72 md:w-96 md:h-96 border-[14px] border-violet-600 rounded-2xl"></div>
 
             <div className="bg-white p-3 rounded-2xl shadow-2xl relative z-10">
               <img
-  src="https://media.canva.com/v2/image-resize/format:PNG/height:500/quality:100/uri:ifs%3A%2F%2FM%2F56982ee3-8877-49c2-a1db-bb0b285e018e/watermark:F/width:500?csig=AAAAAAAAAAAAAAAAAAAAAMFIIx_sR1zY2z4J73VmdY94IY1ZvHAz3QQ7OD8OlCR1&exp=1779953970&osig=AAAAAAAAAAAAAAAAAAAAAIc06eUoL-X_NWsonG_UXn0HybRa2VztmKB14yP3tha-&signer=media-rpc&x-canva-quality=thumbnail_large"
-  alt="Profile"
-  className="w-64 sm:w-72 md:w-[420px] rounded-2xl object-cover"
-/>
+                src="https://media.canva.com/v2/image-resize/format:PNG/height:500/quality:100/uri:ifs%3A%2F%2FM%2F56982ee3-8877-49c2-a1db-bb0b285e018e/watermark:F/width:500?csig=AAAAAAAAAAAAAAAAAAAAAMFIIx_sR1zY2z4J73VmdY94IY1ZvHAz3QQ7OD8OlCR1&exp=1779953970&osig=AAAAAAAAAAAAAAAAAAAAAIc06eUoL-X_NWsonG_UXn0HybRa2VztmKB14yP3tha-&signer=media-rpc&x-canva-quality=thumbnail_large"
+                alt="Profile"
+                className="w-64 sm:w-72 md:w-[420px] rounded-2xl object-cover"
+              />
             </div>
           </div>
 
@@ -120,154 +144,95 @@ export default function PortfolioWebsite() {
       {/* About */}
       <section id="about" className="py-24 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
+
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Passionate about crafting beautiful and functional user experiences with clean design and efficient code.
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-16 items-center">
+
             <div>
               <h3 className="text-2xl font-semibold mb-5">
                 Hi There! I’m King Parungao
               </h3>
 
               <p className="text-gray-600 leading-8 mb-6">
-                I specialize in frontend development, UI/UX design, and digital branding. I help businesses transform ideas into engaging online experiences.
+                I specialize in frontend development, UI/UX design, and digital branding.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4 text-sm text-gray-600">
-                <div>
-                  <span className="font-semibold">Birthday:</span> December 12, 1999
-                </div>
-                <div>
-                  <span className="font-semibold">Email:</span> parungaokingedward12@gmail.com
-                </div>
-                <div>
-                  <span className="font-semibold">Phone:</span> 09758955045
-                </div>
-                <div>
-                  <span className="font-semibold">Location:</span> Altavista Subdivision, Patul, Santiago City
-                </div>
+                <div><span className="font-semibold">Birthday:</span> December 12, 1999</div>
+                <div><span className="font-semibold">Email:</span> parungaokingedward12@gmail.com</div>
+                <div><span className="font-semibold">Phone:</span> 09758955045</div>
+                <div><span className="font-semibold">Location:</span> Altavista Subdivision, Patul, Santiago City</div>
               </div>
             </div>
 
-            <div className="space-y-8">
-              {[
-                ['HTML', '80%'],
-                ['CSS', '70%'],
-                ['JavaScript', '85%'],
-                ['React', '90%'],
-              ].map(([skill, value]) => (
-                <div key={skill}>
-                  <div className="flex justify-between mb-2">
-                    <span className="font-medium">{skill}</span>
-                    <span className="text-gray-500">{value}</span>
-                  </div>
-
-                  <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-violet-600 rounded-full"
-                      style={{ width: value }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="py-24 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Services</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Providing creative digital solutions tailored to your brand and business goals.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div key={service.title} className="bg-white p-8 rounded-3xl shadow-lg hover:-translate-y-2 transition">
-                <div className="w-16 h-16 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                  ✦
-                </div>
-                <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
-                <p className="text-gray-600 leading-7">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio */}
-      <section id="portfolio" className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Portfolio</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              A collection of selected projects showcasing design and development expertise.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {portfolio.map((item) => (
-              <div key={item.title} className="group overflow-hidden rounded-3xl shadow-lg">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="h-72 w-full object-cover group-hover:scale-110 transition duration-500"
-                />
-                <div className="p-6">
-                  <p className="text-violet-600 text-sm font-semibold uppercase mb-2">
-                    {item.category}
-                  </p>
-                  <h3 className="text-2xl font-semibold">{item.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
+      {/* CONTACT */}
       <section id="contact" className="py-24 px-6 bg-gray-50">
         <div className="max-w-5xl mx-auto">
+
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Me</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Have a project in mind? Let’s work together.
-            </p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-2xl p-10 grid md:grid-cols-2 gap-10">
+
             <div>
               <h3 className="text-3xl font-bold mb-6">Get In Touch</h3>
-              <p className="text-gray-600">Email: parungaokingedward12@gmail.com</p>
-              <p className="text-gray-600">Phone: 09758955045</p>
-              <p className="text-gray-600">Location: Santiago City</p>
+              <p>Email: parungaokingedward12@gmail.com</p>
+              <p>Phone: 09758955045</p>
+              <p>Location: Santiago City</p>
             </div>
 
-            <form className="space-y-5">
-              <input className="w-full border p-4 rounded-2xl" placeholder="Your Name" />
-              <input className="w-full border p-4 rounded-2xl" placeholder="Your Email" />
-              <textarea className="w-full border p-4 rounded-2xl" rows="5" placeholder="Your Message"></textarea>
+            {/* EMAILJS FORM */}
+            <form ref={formRef} onSubmit={sendEmail} className="space-y-5">
 
-              <button className="bg-violet-600 text-white w-full py-4 rounded-2xl font-semibold">
+              <input
+                name="user_name"
+                className="w-full border p-4 rounded-2xl"
+                placeholder="Your Name"
+                required
+              />
+
+              <input
+                name="user_email"
+                type="email"
+                className="w-full border p-4 rounded-2xl"
+                placeholder="Your Email"
+                required
+              />
+
+              <textarea
+                name="message"
+                rows="5"
+                className="w-full border p-4 rounded-2xl"
+                placeholder="Your Message"
+                required
+              />
+
+              <button
+                type="submit"
+                className="bg-violet-600 text-white w-full py-4 rounded-2xl font-semibold hover:bg-violet-700 transition"
+              >
                 Send Message
               </button>
+
             </form>
+
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* FOOTER */}
       <footer className="bg-violet-600 text-white text-center py-8">
         <p>© 2026 King Parungao Portfolio. All Rights Reserved.</p>
       </footer>
+
     </div>
   );
 }
