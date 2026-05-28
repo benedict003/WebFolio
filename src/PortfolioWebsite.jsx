@@ -82,6 +82,7 @@ export default function PortfolioWebsite() {
       {/* Hero */}
       <section className="bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-12 px-6 py-16 md:py-28">
+          
           <div>
             <p className="text-violet-600 font-semibold uppercase tracking-widest mb-4">
               Hello, I’m
@@ -100,15 +101,19 @@ export default function PortfolioWebsite() {
             </button>
           </div>
 
+          {/* ✅ UPDATED PROFILE IMAGE BLOCK */}
           <div className="relative flex justify-center">
             <div className="absolute w-72 h-72 md:w-96 md:h-96 border-[14px] border-violet-600 rounded-2xl"></div>
 
-            <img
-              src="https://i.imgur.com/542JFBU.png"
-              alt="Profile"
-              className="relative z-10 w-64 sm:w-72 md:w-[420px] rounded-2xl object-cover shadow-2xl"
-            />
+            <div className="bg-white p-3 rounded-2xl shadow-2xl relative z-10">
+              <img
+                src="https://i.imgur.com/542JFBU.png"
+                alt="Profile"
+                className="w-64 sm:w-72 md:w-[420px] rounded-2xl object-cover"
+              />
+            </div>
           </div>
+
         </div>
       </section>
 
