@@ -107,10 +107,10 @@ export default function PortfolioWebsite() {
 
             <div className="bg-white p-3 rounded-2xl shadow-2xl relative z-10">
               <img
-                src="https://i.imgur.com/542JFBU.png"
-                alt="Profile"
-                className="w-64 sm:w-72 md:w-[420px] rounded-2xl object-cover"
-              />
+  src="https://media.canva.com/v2/image-resize/format:PNG/height:500/quality:100/uri:ifs%3A%2F%2FM%2F56982ee3-8877-49c2-a1db-bb0b285e018e/watermark:F/width:500?csig=AAAAAAAAAAAAAAAAAAAAAMFIIx_sR1zY2z4J73VmdY94IY1ZvHAz3QQ7OD8OlCR1&exp=1779953970&osig=AAAAAAAAAAAAAAAAAAAAAIc06eUoL-X_NWsonG_UXn0HybRa2VztmKB14yP3tha-&signer=media-rpc&x-canva-quality=thumbnail_large"
+  alt="Profile"
+  className="w-64 sm:w-72 md:w-[420px] rounded-2xl object-cover"
+/>
             </div>
           </div>
 
