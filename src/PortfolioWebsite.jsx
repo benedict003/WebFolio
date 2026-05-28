@@ -12,7 +12,7 @@ export default function PortfolioWebsite() {
 
     emailjs
       .sendForm(
-        'service_twi0zcd',
+        'service_aupny9o',
         'template_anf9gmi',
         formRef.current,
         'km6Wq5W9WTdi9xddr'
